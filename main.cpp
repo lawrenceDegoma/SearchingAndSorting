@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <array>
+#include <SFML/Graphics.hpp>
 
 void mergeSort(int [], int);
 void quickSort(int [], int);
@@ -8,6 +9,7 @@ void partition(int [], int, int&);
 void merge(int [], int, int);
 int binarySearch(int [], int, int, int);
 void print(int [], int);
+
 
 int main() {
     int arr[] = {3, 33, 15, 7, 3, 10, 45};
@@ -212,9 +214,9 @@ int binarySearch(int data[], int target, int left, int right){
         if (data[midpt] == target)
             return midpt;
         if (data[midpt] < target)
-            binarySearch(data, target, midpt + 1, right);
+            return binarySearch(data, target, midpt + 1, right);
         else if (data[midpt] > target)
-            binarySearch(data, target, left, midpt - 1);
+            return binarySearch(data, target, left, midpt - 1);
     }
     return -1;
 }
