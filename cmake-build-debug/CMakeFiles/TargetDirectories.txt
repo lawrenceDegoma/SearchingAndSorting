@@ -1,0 +1,3 @@
+/Users/lawrence/CLionProjects/SortingAndSearching/cmake-build-debug/CMakeFiles/SortingAndSearching.dir
+/Users/lawrence/CLionProjects/SortingAndSearching/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/lawrence/CLionProjects/SortingAndSearching/cmake-build-debug/CMakeFiles/rebuild_cache.dir
