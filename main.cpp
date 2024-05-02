@@ -1,7 +1,8 @@
 #include <iostream>
 #include <algorithm>
 #include <array>
-#include <SFML/Graphics.hpp>
+#include <ctime>
+#include <cstdlib>
 
 void mergeSort(int [], int);
 void quickSort(int [], int);
@@ -10,10 +11,15 @@ void merge(int [], int, int);
 int binarySearch(int [], int, int, int);
 void print(int [], int);
 
-
 int main() {
-    int arr[] = {3, 33, 15, 7, 3, 10, 45};
-    int nums[] = {3, 33, 15, 7, 3, 10, 45};
+    srand(time(0));
+    int arr[10], nums[10];
+    for (int i=0; i<10; i++){
+        arr[i] = rand()%100 + 1;
+    }
+    for (int i=0; i<10; i++){
+        nums[i] = rand()%100 + 1;
+    }
     int size = sizeof(arr) / sizeof(arr[0]);
     int sizeNums = sizeof(nums) / sizeof(arr[0]);
     std::cout << "Original array: " << std::endl;
@@ -41,6 +47,8 @@ int main() {
         std::cout << "Target found at index " << index << " (zero-based indexing)." << std::endl;
     else
         std::cout << "Target not found" << std::endl;
+
+    return 0;
 
     return 0;
 }
