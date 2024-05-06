@@ -9,6 +9,7 @@ void quickSort(int [], int);
 void partition(int [], int, int&);
 void merge(int [], int, int);
 int binarySearch(int [], int, int, int);
+void search(const int a[], std::size_t first, std::size_t size, int target, bool &found, int &location);
 void print(int [], int);
 
 int main() {
@@ -50,7 +51,6 @@ int main() {
 
     return 0;
 
-    return 0;
 }
 
 void quickSort(int data[], int size){
@@ -80,30 +80,6 @@ void quickSort(int data[], int size){
     }
 
 }
-
-//void partition(int data[], int size, int& pivot_index) {
-//    int pivot = data[0];
-//    int i = 1, j = size - 1;
-//    while (i <= j) {
-//        while (i < size && data[i] < pivot) {
-//            i++;
-//        }
-//
-//        while (data[j] > pivot) {
-//            j--;
-//        }
-//
-//        if (i<j)
-//            std::swap(data[i], data[j]);
-//
-//        else if (i >= j) {
-//            std::swap(data[j], pivot);
-//            pivot_index = j;
-//            break;
-//        }
-//
-//    }
-//}
 
 void partition(int data[], int size, int& pivot_index) {
     // choose a pivot
@@ -216,6 +192,7 @@ void merge(int data[], int n1, int n2){
     delete[] temp;
 }
 
+// The super cool and simple better way of doing a binary search
 int binarySearch(int data[], int target, int left, int right){
     if (left <= right) {
         int midpt = left + (right - left) / 2;
@@ -227,6 +204,30 @@ int binarySearch(int data[], int target, int left, int right){
             return binarySearch(data, target, left, midpt - 1);
     }
     return -1;
+}
+
+// The oh so ugly binary search approach that takes more arguments than God ever intended
+void search(const int a[], std::size_t first, std::size_t size, int target, bool &found, int, int &location){
+    // base case
+    if (size == 0)
+        found = false;
+
+    else{
+        // calculate middle index
+        std::size_t middleIndex = size / 2;
+        if (a[middleIndex] == target){
+            found = true;
+            location = middleIndex;
+        }
+        else {
+            if (target < a[middleIndex]) {
+                search(a, first, middleIndex, target, found, location);
+            }
+            else{
+                search(a, middleIndex+1, size-middleIndex, target, found, location);
+            }
+        }
+    }
 }
 
 void print(int data[], int size){
